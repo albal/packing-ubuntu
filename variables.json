@@ -1,0 +1,22 @@
+{  
+  "vm-name": "Ubuntu-1804-Template",  
+  "vcenter-server":"vcenter",
+  "vcenter-username":"administrator@vsphere.local",
+  "vcenter-password":"password",
+ 
+  "datacenter": "TSEW",
+  "datastore":"SSD_RAID10",
+  "folder": "Templates",
+  "cluster": "Lab",
+  "network": "10G",
+  
+  "vm-cpu-num": "4",
+  "vm-mem-size": "8192",
+  "vm-disk-size": "20480",
+    
+  "ssh-username": "user",
+  "ssh-password": "password",
+  
+  "iso-url": "http://pxe/ubuntu-18.04.5-server-amd64.iso",
+  "iso-checksum": "sha256:8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996"
+}
