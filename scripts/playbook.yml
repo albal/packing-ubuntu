@@ -1,0 +1,10 @@
+---
+- name: "Provision template using Ansible"
+  hosts: default
+  become: true
+
+  tasks:
+  - name: Install packages
+    apt:
+      name: "auditd"
+      state: present

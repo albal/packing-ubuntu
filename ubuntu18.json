@@ -62,14 +62,17 @@
         "type":"shell",
         "scripts":[
            "scripts/ssh.sh",
-           "scripts/update.sh",
-           "scripts/auditd.sh"
+           "scripts/update.sh"
         ]
      },
      {
         "type":"file",
         "source":"files/authorized_keys",
         "destination":"/home/user/.ssh/authorized_keys"
+     },
+     {
+        "type":"ansible",
+        "playbook_file":"scripts/playbook.yml"
      }
   ]
 }
