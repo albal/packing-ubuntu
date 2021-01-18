@@ -1,0 +1,37 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_GB
+  keyboard:
+    layout: en
+    variant: uk
+  network:
+    network:
+      version: 2
+      ethernets:
+        ens192:
+          dhcp4: true
+  storage:
+    layout:
+      name: lvm
+  identity:
+    hostname: ubuntu20
+    username: user
+    password: $6$CIx3/vtK$jLIBxjcS1NUb7k8M0ItUOcRFmXI64X18vhTLLXPlFVuWHw7Id1Idhy0bgFCH/kXdsPezQcX2xwHuFtaWOIqvZ1
+#  apt:
+#    primary:
+#      - arches: [default]
+#        uri: http://10.0.10.47/ubuntu/
+  packages:
+    - open-vm-tools
+  package_update: false
+  package_upgrade: false
+  ssh:
+    install-server: yes
+  user-data:
+    disable_root: false
+    timezone: Europe/London
+  late-commands:
+    - sed -i 's/^#*\(send dhcp-client-identifier\).*$/\1 = hardware;/' /target/etc/dhcp/dhclient.conf
+    - echo 'user ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/user
+
