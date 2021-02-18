@@ -54,6 +54,7 @@
         "type":"vsphere-iso",
         "username":"{{ user `vcenter-username` }}",
         "vcenter_server":"{{ user `vcenter-server` }}",
+	"vmx_remove_ethernet_interfaces":true,
         "vm_name":"{{ user `vm-name` }}"
      }
   ],
@@ -73,6 +74,10 @@
      {
         "type":"ansible",
         "playbook_file":"scripts/playbook.yml"
+     },
+     {
+	"type":"shell",
+	"script":"scripts/cleanup.sh"
      }
   ]
 }

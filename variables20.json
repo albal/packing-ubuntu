@@ -5,7 +5,7 @@
   "vcenter-password":"password",
  
   "datacenter": "TSEW",
-  "datastore":"SSD_RAID10",
+  "datastore":"SSD_RAID5",
   "folder": "Templates",
   "cluster": "Lab",
   "network": "10G",

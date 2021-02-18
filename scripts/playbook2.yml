@@ -1,0 +1,13 @@
+---
+- name: "Provision template using Ansible"
+  hosts: default
+  become: true
+
+  tasks:
+  - name: Show debug
+    debug:
+      var: hostvars[inventory_hostname]
+      verbosity: 4
+    vars:
+      ansible_ssh_pipelining: no
+   

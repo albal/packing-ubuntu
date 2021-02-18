@@ -1,5 +1,5 @@
 {  
-  "vm-name": "Ubuntu-1804-Template",  
+  "vm-name": "Debian-Testing-Template",  
   "vcenter-server":"vcenter",
   "vcenter-username":"administrator@vsphere.local",
   "vcenter-password":"password",
@@ -12,11 +12,11 @@
   
   "vm-cpu-num": "4",
   "vm-mem-size": "8192",
-  "vm-disk-size": "204800",
+  "vm-disk-size": "20480",
     
   "ssh-username": "user",
   "ssh-password": "password",
   
-  "iso-url": "http://pxe/ubuntu-18.04.5-server-amd64.iso",
-  "iso-checksum": "sha256:8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996"
+  "iso-url": "http://pxe/debian-testing-amd64-netinst.iso",
+  "iso-checksum": "sha256:5d69bb560a27aa56cd0b815bf5e5a3e57419a3b390956174fc7fd3c47b34a9ea"
 }

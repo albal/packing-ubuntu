@@ -4,10 +4,22 @@
         "CPUs":"{{ user `vm-cpu-num` }}",
         "RAM":"{{ user `vm-mem-size` }}",
         "RAM_reserve_all":true,
-        "boot_wait": "5s",
         "boot_command":[
-          "<enter><enter><f6><esc><wait> ",
-          "autoinstall ds=nocloud-net;",
+          "<esc><wait>",
+          "install <wait>",
+          "preseed/url=http://pxe/preseed-debian.cfg <wait>",
+          "debian-installer=en_GB <wait>",
+          "auto <wait>",
+          "locale=en_GB <wait>",
+          "kbd-chooser/method=uk <wait>",
+          "netcfg/get_hostname=debian <wait>",
+          "netcfg/get_domain=lab.tsew.net <wait>",
+          "fb=false <wait>",
+          "debconf/frontend=noninteractive <wait>",
+          "console-setup/ask_detect=false <wait>",
+          "console-keymaps-at/keymap=uk <wait>",
+          "keyboard-configuration/xkb-keymap=ucs <wait>",
+          "mirror/suite=stable",
           "<enter><wait>"
         ],
         "boot_order":"disk,cdrom",
@@ -16,11 +28,11 @@
         "datacenter":"{{ user `datacenter` }}",
         "datastore":"{{ user `datastore` }}",
         "disk_controller_type":"pvscsi",
+        "floppy_files":[
+           "./preseed-debian.cfg"
+        ],
         "folder":"{{ user `folder` }}",
-        "floppy_files": ["./http/user-data", "./http/meta-data"],
-        "floppy_label": "cidata",
         "guest_os_type":"ubuntu64Guest",
-        "http_directory": "./http",
         "insecure_connection":"true",
         "iso_checksum":"{{ user `iso-checksum` }}",
         "iso_urls":"{{ user `iso-url` }}",
@@ -33,9 +45,6 @@
         "password":"{{ user `vcenter-password` }}",
         "ssh_password":"{{ user `ssh-password` }}",
         "ssh_username":"{{ user `ssh-username` }}",
-        "ssh_pty": "true",
-        "ssh_timeout": "60m",
-        "ssh_handshake_attempts": "720",
         "storage":[
            {
               "disk_size":"{{ user `vm-disk-size` }}",
@@ -53,8 +62,7 @@
         "type":"shell",
         "scripts":[
            "scripts/ssh.sh",
-           "scripts/update.sh",
-	   "scripts/auditd.sh"
+           "scripts/update.sh"
         ]
      },
      {
@@ -63,10 +71,8 @@
         "destination":"/home/user/.ssh/authorized_keys"
      },
      {
-        "type":"shell",
-        "scripts":[
-           "scripts/ssh-auth.sh"
-        ]
+        "type":"ansible",
+        "playbook_file":"scripts/playbook.yml"
      }
   ]
 }
